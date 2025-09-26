@@ -105,7 +105,7 @@ export function ActivityTimeline({
             <div className="  relative pl-[0.5px] pb-4 flex items-center justify-start gap-4">
               {index < processedEvents.length - 1 ||
               (isLoading && index === processedEvents.length - 1) ? (
-                <div className="absolute left-3 top-7 h-full w-0.5 bg-primary" />
+                <div className="absolute left-3 top-3 h-full w-0.5 bg-primary" />
               ) : null}
               <div
                 className={cn(

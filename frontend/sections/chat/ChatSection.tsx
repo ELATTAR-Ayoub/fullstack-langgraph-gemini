@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -44,6 +45,36 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ThemeModeButton } from "@/components/ThemeModeButton";
+
+// Configuration objects for easy editing
+const SEARCH_DEPTH_OPTIONS = {
+  low: {
+    value: "low",
+    label: "Low - Quick search (1 query, 1 loop)",
+    initialSearchQueryCount: 1,
+    maxResearchLoops: 1,
+  },
+  medium: {
+    value: "medium",
+    label: "Medium - Balanced search (3 queries, 3 loops)",
+    initialSearchQueryCount: 3,
+    maxResearchLoops: 3,
+  },
+  high: {
+    value: "high",
+    label: "High - Comprehensive search (5 queries, 10 loops)",
+    initialSearchQueryCount: 5,
+    maxResearchLoops: 10,
+  },
+} as const;
+
+const REASONING_MODELS = {
+  "gemini-2.5-flash": {
+    value: "gemini-2.5-flash",
+    label: "Gemini 2.5 Flash",
+    disabled: false,
+  },
+} as const;
 
 export default function ChatSection() {
   // UI
@@ -172,23 +203,11 @@ export default function ChatSection() {
       setProcessedEventsTimeline([]);
       hasFinalizeEventOccurredRef.current = false;
 
-      // convert effort to, initial_search_query_count and max_research_loops
-      let initial_search_query_count = 0;
-      let max_research_loops = 0;
-      switch (effort) {
-        case "low":
-          initial_search_query_count = 1;
-          max_research_loops = 1;
-          break;
-        case "medium":
-          initial_search_query_count = 3;
-          max_research_loops = 3;
-          break;
-        case "high":
-          initial_search_query_count = 5;
-          max_research_loops = 10;
-          break;
-      }
+      // Get effort configuration from the object
+      const effortConfig =
+        SEARCH_DEPTH_OPTIONS[effort as keyof typeof SEARCH_DEPTH_OPTIONS];
+      const initial_search_query_count = effortConfig.initialSearchQueryCount;
+      const max_research_loops = effortConfig.maxResearchLoops;
 
       const newMessages: Message[] = [
         ...(thread.messages || []),
@@ -306,6 +325,25 @@ export default function ChatSection() {
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid gap-2">
+                <Label htmlFor="model">Reasoning Model</Label>
+                <Select value={selectedModel} onValueChange={setSelectedModel}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select model" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.values(REASONING_MODELS).map((model) => (
+                      <SelectItem
+                        key={model.value}
+                        value={model.value}
+                        disabled={model.disabled}
+                      >
+                        {model.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid gap-2">
                 <Label htmlFor="effort">Search Effort</Label>
                 <Select
                   value={selectedEffort}
@@ -315,39 +353,19 @@ export default function ChatSection() {
                     <SelectValue placeholder="Select effort level" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="low">
-                      Low - Quick search (1 query, 1 loop)
-                    </SelectItem>
-                    <SelectItem value="medium">
-                      Medium - Balanced search (3 queries, 3 loops)
-                    </SelectItem>
-                    <SelectItem value="high">
-                      High - Comprehensive search (5 queries, 10 loops)
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="model">Reasoning Model</Label>
-                <Select value={selectedModel} onValueChange={setSelectedModel}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select model" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="gemini-2.5-flash">
-                      Gemini 2.5 Flash
-                    </SelectItem>
-                    <SelectItem value="claude-3-5-sonnet" disabled>
-                      Claude 3.5 Sonnet (Coming Soon)
-                    </SelectItem>
-                    <SelectItem value="gpt-4o" disabled>
-                      GPT-4o (Coming Soon)
-                    </SelectItem>
+                    {Object.values(SEARCH_DEPTH_OPTIONS).map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
             </div>
             <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="outline">Close</Button>
+              </DialogClose>
               <Button onClick={handleSaveSettings}>Save Settings</Button>
             </DialogFooter>
           </DialogContent>
@@ -357,7 +375,7 @@ export default function ChatSection() {
       {/* Main Chat Area */}
       <div className={cn("h-full w-full relative flex-col overflow-y-auto  ")}>
         {/* welcome message and Message View */}
-        {thread.messages.length === 0 ? (
+        {thread.messages.length === 0 && !thread.isLoading ? (
           <WelcomeScreen onSuggestionClick={handleSuggestionClick} />
         ) : error ? (
           <div className="flex flex-col items-center justify-center h-full">
