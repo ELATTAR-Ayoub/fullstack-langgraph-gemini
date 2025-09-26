@@ -5,6 +5,7 @@ import SplitText from "@/components/gsap/SplitText";
 import { cn } from "@/lib/utils";
 import styles from "@/styles";
 import { WelcomeScreenProps, SuggestionExample } from "@/context";
+import AnimatedContent from "./gsap/AnimatedContent";
 
 export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
   const promptExamples: SuggestionExample[] = [
@@ -40,7 +41,20 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
 
   return (
     <div className={cn(styles.flexCenter, "flex-col h-full")}>
-      <h1 className={cn(styles.p)}>Hi, there!👋</h1>
+      <AnimatedContent
+        distance={50}
+        direction="vertical"
+        reverse={true}
+        duration={1}
+        ease="power3.out"
+        initialOpacity={0}
+        animateOpacity
+        scale={0.9}
+        threshold={0.1}
+        delay={0.3}
+      >
+        <h1 className={cn(styles.p)}>Hi, there!👋</h1>
+      </AnimatedContent>
       <SplitText
         text="Ask me anything!"
         className="H1 pb-2"
@@ -57,24 +71,37 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
 
       {/* prompt examples */}
       <div className="flex items-center gap-4 mt-4 max-w-[800px] lg:flex-row flex-col">
-        {promptExamples.map((example) => {
+        {promptExamples.map((example, index) => {
           const IconComponent = example.icon;
           return (
-            <div
+            <AnimatedContent
               key={example.id}
-              className="flex lg:items-start items-center flex-col gap-2 border border-muted p-3 rounded-lg cursor-pointer hover:bg-accent/50 transition-colors shadow-sm lg:max-w-none max-w-[300px]"
-              onClick={() => handlePromptExampleClick(example.text)}
+              distance={100}
+              direction="vertical"
+              reverse={false}
+              duration={1}
+              ease="power3.out"
+              initialOpacity={0}
+              animateOpacity
+              scale={0.9}
+              threshold={0.1}
+              delay={0.5 * index + 2}
             >
               <div
-                className={`flex items-center p-2 ${example.color} rounded-sm border ${example.borderColor}`}
+                className="flex lg:items-start items-center flex-col gap-2 border border-muted p-3 rounded-lg cursor-pointer hover:bg-accent/50 transition-colors shadow-sm lg:max-w-none max-w-[300px]"
+                onClick={() => handlePromptExampleClick(example.text)}
               >
-                <IconComponent className={`w-4 h-4 ${example.iconColor}`} />
-              </div>
+                <div
+                  className={`flex items-center p-2 ${example.color} rounded-sm border ${example.borderColor}`}
+                >
+                  <IconComponent className={`w-4 h-4 ${example.iconColor}`} />
+                </div>
 
-              <p className={cn(styles.small, "text-center lg:text-left")}>
-                {example.text}
-              </p>
-            </div>
+                <p className={cn(styles.small, "text-center lg:text-left")}>
+                  {example.text}
+                </p>
+              </div>
+            </AnimatedContent>
           );
         })}
       </div>
