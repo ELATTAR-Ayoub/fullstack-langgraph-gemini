@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import styles from "@/styles";
 import ChatSection from "@/sections/chat/ChatSection";
@@ -7,7 +9,7 @@ export default function Home() {
   return (
     <div
       className={cn(
-        "w-full h-full max-h-screen border border-secondary-foreground/10 shadow",
+        " relative w-full h-full max-h-screen border border-secondary-foreground/10 shadow",
         styles.sectionsBorderRadius
       )}
     >

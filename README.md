@@ -228,14 +228,6 @@ GEMINI_API_KEY=<your_key> docker-compose up
 - **No Data Persistence**: Queries and results are not stored
 - **Secure Communication**: HTTPS for all API communications
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## 🙏 Acknowledgments
 
 - Built with [LangGraph](https://langchain-ai.github.io/langgraph/) for agent orchestration

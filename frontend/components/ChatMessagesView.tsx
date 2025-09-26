@@ -125,7 +125,7 @@ const mdComponents = {
       {children}
     </ul>
   ),
-  ol: ({ className, children, ordered, ...props }: MdComponentProps) => (
+  ol: ({ className, children, ...props }: MdComponentProps) => (
     <ol className={cn(styles.list, "list-decimal", className)} {...props}>
       {children}
     </ol>

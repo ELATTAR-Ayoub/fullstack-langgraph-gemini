@@ -102,7 +102,10 @@ export function ActivityTimeline({
       {processedEvents.length > 0 ? (
         <div className="space-y-0">
           {processedEvents.map((eventItem, index) => (
-            <div className="  relative pl-[0.5px] pb-4 flex items-center justify-start gap-4">
+            <div
+              key={`event-${index}-${eventItem.title}`}
+              className="  relative pl-[0.5px] pb-4 flex items-center justify-start gap-4"
+            >
               {index < processedEvents.length - 1 ||
               (isLoading && index === processedEvents.length - 1) ? (
                 <div className="absolute left-3 top-3 h-full w-0.5 bg-primary" />
