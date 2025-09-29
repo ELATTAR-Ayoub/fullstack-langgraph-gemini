@@ -221,3 +221,24 @@ export interface ThemeContextType {
   setTheme: (theme: Theme) => void;
   actualTheme: "light" | "dark"; // The resolved theme (system resolves to light/dark)
 }
+
+// Chat Room Types
+export interface ChatRoom {
+  id: string;
+  title: string;
+  createdAt: Date;
+  updatedAt: Date;
+  messages: Message[];
+  processedEventsTimeline: ProcessedEvent[];
+  historicalActivities: Record<string, ProcessedEvent[]>;
+}
+
+export interface ChatRoomsContextType {
+  chatRooms: ChatRoom[];
+  currentChatRoomId: string | null;
+  createChatRoom: (title?: string) => string;
+  deleteChatRoom: (id: string) => void;
+  switchToChatRoom: (id: string) => void;
+  updateChatRoom: (id: string, updates: Partial<ChatRoom>) => void;
+  getCurrentChatRoom: () => ChatRoom | null;
+}
