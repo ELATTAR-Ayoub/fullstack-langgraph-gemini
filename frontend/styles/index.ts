@@ -17,7 +17,8 @@
   leftPadding: "pl-4 sm:pl-6 lg:pl-8",
   rightPadding: "pr-4 sm:pr-6 lg:pr-8",
   GrandFatherPadding: "",
-  headerPadding: "p-1 sm:p-2 lg:p-2",
+  headerPadding: "p-4 md:p-4",
+  chatHeaderPadding: "p-1 sm:p-2 lg:p-2",
 
   flexCenter: "flex justify-center items-center",
   flexCenterStart: "flex justify-center items-start",
@@ -29,14 +30,15 @@
   flexEndCenter: "flex justify-end items-center",
 
   // hero section
-  heroHeading: "text-4xl md:text-6xl lg:text-7xl",
+  heroHeading:
+    "scroll-m-20 text-4xl sm:text-5xl md:text-6xl tracking-tight text-balance",
 
   // Typography
   H1: "scroll-m-20 text-4xl font-extrabold tracking-tight text-balance",
   H2: "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
   H3: "scroll-m-20 text-2xl font-semibold tracking-tight",
   H4: "scroll-m-20 text-xl font-semibold tracking-tight",
-  p: "leading-7 [&:not(:first-child)]:my-3",
+  p: " text-sm sm:text-base leading-7 [&:not(:first-child)]:my-3 text-balance",
   large: "text-lg font-semibold",
   small: "text-sm leading-none font-medium",
   Xsmall: "text-xs leading-none font-medium",

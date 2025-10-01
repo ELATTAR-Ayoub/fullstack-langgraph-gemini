@@ -78,8 +78,8 @@ export function ThemeModeButton() {
             <button
               onClick={() => handleThemeSelect("light")}
               className={cn(
-                "w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-sm cursor-pointer",
-                theme === "light" && "bg-accent text-accent-foreground"
+                "w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-secondary hover:text-secondary-foreground rounded-sm cursor-pointer",
+                theme === "light" && "bg-secondary text-secondary-foreground"
               )}
             >
               <SunIcon className="h-4 w-4" />
@@ -94,8 +94,8 @@ export function ThemeModeButton() {
             <button
               onClick={() => handleThemeSelect("dark")}
               className={cn(
-                "w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-sm cursor-pointer",
-                theme === "dark" && "bg-accent text-accent-foreground"
+                "w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-secondary hover:text-secondary-foreground rounded-sm cursor-pointer",
+                theme === "dark" && "bg-secondary text-secondary-foreground"
               )}
             >
               <MoonIcon className="h-4 w-4" />
@@ -110,8 +110,8 @@ export function ThemeModeButton() {
             <button
               onClick={() => handleThemeSelect("system")}
               className={cn(
-                "w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-sm cursor-pointer",
-                theme === "system" && "bg-accent text-accent-foreground"
+                "w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-secondary hover:text-secondary-foreground rounded-sm cursor-pointer",
+                theme === "system" && "bg-secondary text-secondary-foreground"
               )}
             >
               <MonitorIcon className="h-4 w-4" />

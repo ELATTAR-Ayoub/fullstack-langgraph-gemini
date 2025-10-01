@@ -34,12 +34,9 @@ export function ChatRoomProvider({ children }: { children: React.ReactNode }) {
       } else if (parsedRooms.length > 0) {
         setCurrentRoomId(parsedRooms[0].id);
       }
-    } else {
-      // Create initial room if none exist
-      const initialRoom = createNewRoomObject();
-      setChatRooms([initialRoom]);
-      setCurrentRoomId(initialRoom.id);
     }
+    // REMOVED: No longer automatically create initial room
+    // This was causing automatic redirection on homepage
   }, []);
 
   // Auto-save chat rooms to localStorage

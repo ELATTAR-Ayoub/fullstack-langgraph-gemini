@@ -17,6 +17,7 @@ export function ChatRoomsProvider({ children }: { children: React.ReactNode }) {
   const [currentChatRoomId, setCurrentChatRoomId] = useState<string | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -37,15 +38,20 @@ export function ChatRoomsProvider({ children }: { children: React.ReactNode }) {
         console.error("Failed to parse saved chat rooms:", error);
       }
     }
+    setIsLoading(false);
   }, []);
 
   // Auto-save chat rooms to localStorage when they change
   useEffect(() => {
-    localStorage.setItem("chatRooms", JSON.stringify(chatRooms));
-  }, [chatRooms]);
+    if (!isLoading && chatRooms.length > 0) {
+      localStorage.setItem("chatRooms", JSON.stringify(chatRooms));
+    }
+  }, [chatRooms, isLoading]);
 
   // Handle URL-based navigation: /chat/[id] routes
   useEffect(() => {
+    if (isLoading) return; // Don't run until we've loaded from localStorage
+
     const match = pathname.match(/^\/chat\/(.+)$/);
     if (match) {
       const roomId = match[1];
@@ -55,18 +61,8 @@ export function ChatRoomsProvider({ children }: { children: React.ReactNode }) {
       if (!chatRooms.find((room) => room.id === roomId)) {
         createChatRoom("New Chat", roomId);
       }
-    } else if (pathname === "/" && chatRooms.length === 0) {
-      // First visit - create initial chat room
-      const newRoomId = createChatRoom();
-      router.push(`/chat/${newRoomId}`);
-    } else if (pathname === "/" && chatRooms.length > 0) {
-      // Redirect to most recent chat room
-      const mostRecent = chatRooms.sort(
-        (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime()
-      )[0];
-      router.push(`/chat/${mostRecent.id}`);
     }
-  }, [pathname, chatRooms, router]);
+  }, [pathname, chatRooms, router, isLoading]);
 
   // Create new chat room with unique ID
   const createChatRoom = (title?: string, id?: string): string => {
@@ -130,6 +126,7 @@ export function ChatRoomsProvider({ children }: { children: React.ReactNode }) {
     switchToChatRoom,
     updateChatRoom,
     getCurrentChatRoom,
+    isLoading, // Add loading state to context
   };
 
   return (

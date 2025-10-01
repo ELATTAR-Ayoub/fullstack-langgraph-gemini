@@ -88,7 +88,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
               delay={0.5 * index + 2}
             >
               <div
-                className="flex lg:items-start items-center flex-col gap-2 border border-muted p-3 rounded-lg cursor-pointer hover:bg-accent/50 transition-colors shadow-sm lg:max-w-none max-w-[300px]"
+                className="flex lg:items-start items-center flex-col gap-2 border border-muted p-3 rounded-lg cursor-pointer hover:bg-secondary/50 transition-colors shadow-sm lg:max-w-none max-w-[300px]"
                 onClick={() => handlePromptExampleClick(example.text)}
               >
                 <div

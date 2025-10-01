@@ -1,6 +1,7 @@
 "use client";
 
 import { use } from "react";
+import { useSearchParams } from "next/navigation";
 import ChatSection from "@/sections/chat/ChatSection";
 import { cn } from "@/lib/utils";
 import { AppSidebar } from "@/components/sidebar/app-sidebar";
@@ -13,7 +14,9 @@ interface ChatPageProps {
 
 export default function ChatPage({ params }: ChatPageProps) {
   const resolvedParams = use(params);
-  
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
+
   return (
     <div
       className={cn(
@@ -24,7 +27,7 @@ export default function ChatPage({ params }: ChatPageProps) {
       <SidebarProvider>
         <AppSidebar variant="floating" />
         <SidebarInset>
-          <ChatSection chatId={resolvedParams.id} />
+          <ChatSection chatId={resolvedParams.id} initialMessage={message} />
         </SidebarInset>
       </SidebarProvider>
     </div>

@@ -170,7 +170,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                   <Button
                                     variant="ghost"
                                     size="icon"
-                                    className="p-1 hover:bg-accent rounded-sm"
                                     onClick={(e) => e.stopPropagation()}
                                   >
                                     <MoreHorizontal />

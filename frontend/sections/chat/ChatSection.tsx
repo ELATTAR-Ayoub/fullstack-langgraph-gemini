@@ -54,6 +54,7 @@ import { useChatRooms } from "@/context";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import AnimatedContent from "@/components/gsap/AnimatedContent";
 
 // Configuration objects for easy editing
 const SEARCH_DEPTH_OPTIONS = {
@@ -87,9 +88,13 @@ const REASONING_MODELS = {
 
 interface ChatSectionProps {
   chatId: string;
+  initialMessage?: string | null;
 }
 
-export default function ChatSection({ chatId }: ChatSectionProps) {
+export default function ChatSection({
+  chatId,
+  initialMessage,
+}: ChatSectionProps) {
   // Chat rooms context
   const {
     getCurrentChatRoom,
@@ -137,6 +142,13 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
       hasFinalizeEventOccurredRef.current = false;
     }
   }, [currentRoom?.id]);
+
+  // Set initial suggestion text from URL parameter
+  useEffect(() => {
+    if (initialMessage) {
+      setSuggestionText(initialMessage);
+    }
+  }, [initialMessage]);
 
   // Stable update function to prevent infinite loops
   const updateChatRoomStable = useCallback(
@@ -452,8 +464,8 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
       {/* Header */}
       <div
         className={cn(
-          "flex justify-between items-center ",
-          styles.headerPadding
+          "flex justify-between items-center md:!pt-4 ",
+          styles.chatHeaderPadding
         )}
       >
         {/* left side - Theme Switcher */}
@@ -554,10 +566,9 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
                   </p>
                 </div>
                 <Button
-                  variant="outline"
+                  variant="destructive"
                   size="sm"
                   onClick={() => setIsDeleteAllDialogOpen(true)}
-                  className="text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground"
                 >
                   <Trash2Icon className="h-4 w-4 mr-2" />
                   Clear All
@@ -665,6 +676,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
       </div>
 
       {/* Input Bar */}
+
       <InputBar
         onSubmit={handleSubmit}
         isLoading={thread.isLoading}

@@ -153,6 +153,7 @@ export interface InputBarProps {
   onModelChange: (model: string) => void;
   onEffortChange: (effort: string) => void;
   suggestionText?: string;
+  className?: string;
 }
 
 // Update ChatMessagesViewProps to use LangGraph's Message type
@@ -241,4 +242,5 @@ export interface ChatRoomsContextType {
   switchToChatRoom: (id: string) => void;
   updateChatRoom: (id: string, updates: Partial<ChatRoom>) => void;
   getCurrentChatRoom: () => ChatRoom | null;
+  isLoading: boolean; // Add loading state
 }
