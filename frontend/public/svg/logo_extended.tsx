@@ -1,10 +1,10 @@
 import React from "react";
 
-interface LogoProps {
+interface LogoExtendedProps {
   className?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "" }) => (
+const LogoExtended: React.FC<LogoExtendedProps> = ({ className = "" }) => (
   <svg width={124} height={22} viewBox="0 0 124 22" className={className}>
     <path
       d="M9 0L9.50988 3.0955C9.96591 5.86412 12.1359 8.03409 14.9045 8.49012L18 9L14.9045 9.50988C12.1359 9.96591 9.96591 12.1359 9.50988 14.9045L9 18L8.49012 14.9045C8.03409 12.1359 5.86412 9.96591 3.0955 9.50988L0 9L3.0955 8.49012C5.86412 8.03409 8.03409 5.86412 8.49012 3.0955L9 0Z"
@@ -61,4 +61,4 @@ const Logo: React.FC<LogoProps> = ({ className = "" }) => (
   </svg>
 );
 
-export default Logo;
+export default LogoExtended;

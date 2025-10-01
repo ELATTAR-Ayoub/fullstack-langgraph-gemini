@@ -31,7 +31,7 @@ export default function RootLayout({
       <ThemeProvider>
         <ChatRoomsProvider>
           <body
-            className={` relative w-screen h-screen ${geistSans.variable} ${geistMono.variable} antialiased ${styles.flexCenter}`}
+            className={` relative w-screen h-screen overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased ${styles.flexCenter}`}
           >
             <div className="mainContent overflow-hidden">{children}</div>
           </body>

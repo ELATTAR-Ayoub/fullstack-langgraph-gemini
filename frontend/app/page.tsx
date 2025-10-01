@@ -21,6 +21,8 @@ import Star from "@/public/svg/star";
 import Header from "@/components/Header";
 import { InputBar } from "@/components/InputBar";
 import HeroSection from "@/sections/landing/HeroSection";
+import FeaturesSection from "@/sections/landing/FeaturesSection";
+import ReasonsSection from "@/sections/landing/ReasonsSectios";
 
 export default function Home() {
   const router = useRouter();
@@ -61,41 +63,6 @@ export default function Home() {
     router.push(`/chat/${newRoomId}?message=${encodeURIComponent(inputValue)}`);
   };
 
-  const features = [
-    {
-      icon: SearchIcon,
-      title: "Deep Web Research",
-      description:
-        "Comprehensive search across multiple sources for accurate, up-to-date information",
-      color: "bg-blue-100 dark:bg-blue-900/30",
-      iconColor: "text-blue-600 dark:text-blue-400",
-    },
-    {
-      icon: SparklesIcon,
-      title: "AI-Powered Analysis",
-      description:
-        "Advanced reasoning with Google Gemini for insightful and contextual responses",
-      color: "bg-purple-100 dark:bg-purple-900/30",
-      iconColor: "text-purple-600 dark:text-purple-400",
-    },
-    {
-      icon: Zap,
-      title: "Configurable Search Depth",
-      description:
-        "Choose your search intensity from quick answers to comprehensive research",
-      color: "bg-yellow-100 dark:bg-yellow-900/30",
-      iconColor: "text-yellow-600 dark:text-yellow-400",
-    },
-    {
-      icon: BookOpen,
-      title: "Source Transparency",
-      description:
-        "Every answer includes detailed sources and research timeline",
-      color: "bg-green-100 dark:bg-green-900/30",
-      iconColor: "text-green-600 dark:text-green-400",
-    },
-  ];
-
   return (
     <div
       className={cn(
@@ -112,16 +79,10 @@ export default function Home() {
         <HeroSection />
 
         {/* Features section */}
-        <section
-          className={cn(
-            "flex flex-col gap-4 p-4 min-h-screen md:max-h-screen",
-            styles.flexCenter,
-            "relative"
-          )}
-        >
-          <h2 className={`${styles.H2}`}>Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
-        </section>
+        <FeaturesSection />
+
+        {/* Reasons section */}
+        <ReasonsSection />
       </main>
     </div>
   );

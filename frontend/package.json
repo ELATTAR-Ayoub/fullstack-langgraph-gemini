@@ -31,6 +31,7 @@
     "copilotkit": "^0.0.51",
     "gsap": "^3.13.0",
     "lucide-react": "^0.544.0",
+    "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.22",
     "next": "15.5.4",
     "ogl": "^1.0.11",

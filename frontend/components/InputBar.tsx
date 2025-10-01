@@ -91,7 +91,7 @@ export function InputBar({
       <form
         onSubmit={handleSubmit}
         className={cn(
-          "relative flex items-center gap-2 bg-background/75 z-10 min-h-[124px] max-w-[400px] w-full overflow-hidden rounded-2xl shadow-sm border border-muted-foreground/25",
+          "relative flex items-center gap-2 bg-background/75 backdrop-blur-sm z-10 min-h-[124px] max-w-[400px] w-full overflow-hidden rounded-2xl shadow-sm border border-muted-foreground/25",
           styles.flexCenter
         )}
       >

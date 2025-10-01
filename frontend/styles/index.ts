@@ -35,9 +35,9 @@
 
   // Typography
   H1: "scroll-m-20 text-4xl font-extrabold tracking-tight text-balance",
-  H2: "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
-  H3: "scroll-m-20 text-2xl font-semibold tracking-tight",
-  H4: "scroll-m-20 text-xl font-semibold tracking-tight",
+  H2: "scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0 text-balance",
+  H3: "scroll-m-20 text-2xl font-semibold tracking-tight text-balance",
+  H4: "scroll-m-20 text-xl font-semibold tracking-tight text-balance",
   p: " text-sm sm:text-base leading-7 [&:not(:first-child)]:my-3 text-balance",
   large: "text-lg font-semibold",
   small: "text-sm leading-none font-medium",

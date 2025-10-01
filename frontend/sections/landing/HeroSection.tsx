@@ -214,7 +214,7 @@ export default function HeroSection() {
             />
 
             {/* Suggestions */}
-            <div className="flex flex-col gap-2 w-full max-w-[400px] bg-secondary/50 p-4 py-2 pb-0 rounded-xl text-primary border border-border/50 shadow">
+            <div className="flex flex-col gap-2 w-full max-w-[400px] bg-secondary/50 backdrop-blur-sm p-4 py-2 pb-0 rounded-xl text-primary border border-border/50 shadow">
               <button
                 className="w-full flex items-center gap-2 opacity-80 p-1 border-b border-primary/25 pb-3 cursor-pointer"
                 onClick={handleStartNewChat}

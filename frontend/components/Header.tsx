@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "flex justify-between items-center fixed top-0 left-0 right-0 z-30 w-full ",
+        "flex justify-between items-center fixed top-0 left-0 right-0 z-30 w-full bg-background/50 lg:bg-transparent lg:backdrop-blur-none backdrop-blur-sm ",
         styles.headerPadding
       )}
     >
