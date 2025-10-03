@@ -855,6 +855,12 @@ export default function Home() {
     <section className={"Section"}>
       {/* Header Content */}
       <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">
+        <p
+          className={`${styles.Xsmall} max-w-fit text-center p-2 header-special-title-shadow bg-accent/5 rounded-full shadow border border-border/25 mx-auto`}
+        >
+          Features that every researcher needs
+        </p>
+
         <h2 className={`${styles.SectionH2} md:text-center`}>
           Everything You Need for Deep Research
         </h2>

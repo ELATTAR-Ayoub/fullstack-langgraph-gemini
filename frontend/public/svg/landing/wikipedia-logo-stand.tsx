@@ -35,9 +35,9 @@ const WikipediaLogoStand: React.FC<WikipediaLogoStandProps> = ({
         width="289.3"
         height="294.3"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -107,9 +107,9 @@ const WikipediaLogoStand: React.FC<WikipediaLogoStandProps> = ({
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(142 215.5) rotate(-90) scale(55 234.707)"
       >
-        <stop stop-color="#C4E8FF" stop-opacity="0" />
-        <stop offset="0.588676" stop-color="#58BEFF" stop-opacity="0.2" />
-        <stop offset="1" stop-color="#D4EEFF" />
+        <stop stopColor="#C4E8FF" stopOpacity="0" />
+        <stop offset="0.588676" stopColor="#58BEFF" stopOpacity="0.2" />
+        <stop offset="1" stopColor="#D4EEFF" />
       </radialGradient>
     </defs>
   </svg>

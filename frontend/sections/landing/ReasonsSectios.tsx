@@ -161,6 +161,12 @@ export default function ReasonsSection() {
 
       {/* Header */}
       <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">
+        <p
+          className={`${styles.Xsmall} max-w-fit text-center p-2 header-special-title-shadow bg-accent/5 rounded-full shadow border border-border/25 mx-auto`}
+        >
+          Why choose DeepSearch?
+        </p>
+
         <h2 className={`${styles.SectionH2} md:text-center`}>
           Expert intelligence for everyone
         </h2>
@@ -184,7 +190,7 @@ export default function ReasonsSection() {
                   variant="ghost"
                   onClick={() => handleFeatureClick(index)}
                   className={cn(
-                    "w-full justify-start items-start px-0 py-4 h-auto text-left transition-all duration-300 hover:scale-100 hover:bg-transparent opacity-50 hover:opacity-100",
+                    "w-full justify-start items-start px-0 py-4 h-auto text-left transition-all duration-300 hover:scale-100 hover:!bg-transparent opacity-50 hover:opacity-100",
                     activeFeature === index && " opacity-100"
                   )}
                 >

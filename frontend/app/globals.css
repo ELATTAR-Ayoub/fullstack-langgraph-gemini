@@ -270,6 +270,18 @@
     }
   }
 
+  /* Infinite Moving Cards Animation */
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s)
+      var(--animation-direction, forwards) linear infinite;
+  }
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
   /* Shadow */
   .light-reflection-shadow {
     box-shadow: inset 0px 6px 8px 0px rgba(211, 247, 255, 0.9),
@@ -295,6 +307,38 @@
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 1) 100%
     );
+  }
+
+  .testimonials-section-card-shadow {
+    background: linear-gradient(
+      135deg,
+      rgba(148, 214, 255, 0.2) 0%,
+      /* 100% * 0.2 = 20% */ rgba(148, 214, 255, 0.025) 37%,
+      /* 45% * 0.2 ≈ 9% */ rgba(148, 214, 255, 0) 100% /* 0% * 0.2 = 0% */
+    );
+  }
+
+  .header-special-title-shadow {
+    background: linear-gradient(
+      135deg,
+      rgba(148, 214, 255, 0.8) 0%,
+      rgba(148, 214, 255, 0.5) 37%,
+      rgba(148, 214, 255, 0) 100%
+    );
+    background-size: 250% 250%;
+    animation: gradient-move 10s ease-in-out infinite;
+  }
+
+  @keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   /* Main */

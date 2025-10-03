@@ -117,7 +117,7 @@ export default function HeroSection() {
           delay={3}
         >
           <p
-            className={`${styles.Xsmall} max-w-fit text-center p-2 bg-accent/50 rounded-full shadow border border-border/50`}
+            className={`${styles.Xsmall} max-w-fit testimonials-section-card-shadow text-center p-2 bg-accent/50 rounded-full shadow border border-border/50`}
           >
             DeepSearch V3 Coming soon!
           </p>
@@ -126,7 +126,7 @@ export default function HeroSection() {
         {/* Hero Content */}
         <div className="flex flex-col md:gap-2 ">
           <h1
-            className={`${styles.heroHeading} font-normal flex flex-col md:items-center gap-0 `}
+            className={`${styles.heroHeading} font-normal flex flex-col md:items-center gap-0  `}
           >
             <SplitText
               text="Stop Searching."

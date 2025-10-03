@@ -36,9 +36,9 @@ const Logo3DFloating: React.FC<Logo3DFloatingProps> = ({ className = "" }) => (
         width="178.825"
         height="170.163"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"

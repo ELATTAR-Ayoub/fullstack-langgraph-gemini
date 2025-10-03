@@ -24,14 +24,14 @@ const LigatedSquare: React.FC<LigatedSquareProps> = ({ className = "" }) => (
       />
     </g>
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M227 454.5V39L137.5 123L21 81L21.5 495L110 414L137.5 423.519L227 454.5Z"
       fill="url(#paint1_linear_82_1457)"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M227 454.5V39L137.5 123L21 81L21.5 495L110 414L137.5 423.519L227 454.5Z"
       fill="black"
       fillOpacity="0.05"
@@ -48,9 +48,9 @@ const LigatedSquare: React.FC<LigatedSquareProps> = ({ className = "" }) => (
         width="246.4"
         height="161.9"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -120,8 +120,8 @@ const LigatedSquare: React.FC<LigatedSquareProps> = ({ className = "" }) => (
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(124 474.75) rotate(77.0226) scale(62.3423 97.1985)"
       >
-        <stop stop-color="#C6E9FF" />
-        <stop offset="1" stop-color="#6EC7FF" />
+        <stop stopColor="#C6E9FF" />
+        <stop offset="1" stopColor="#6EC7FF" />
       </radialGradient>
       <linearGradient
         id="paint1_linear_82_1457"
@@ -131,9 +131,9 @@ const LigatedSquare: React.FC<LigatedSquareProps> = ({ className = "" }) => (
         y2="535.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0.169281" stop-color="#D4EEFF" stop-opacity="0" />
-        <stop offset="0.471014" stop-color="#B1E1FF" stop-opacity="0.2" />
-        <stop offset="1" stop-color="#62C2FE" />
+        <stop offset="0.169281" stopColor="#D4EEFF" stopOpacity="0" />
+        <stop offset="0.471014" stopColor="#B1E1FF" stopOpacity="0.2" />
+        <stop offset="1" stopColor="#62C2FE" />
       </linearGradient>
       <linearGradient
         id="paint2_linear_82_1457"
@@ -143,9 +143,9 @@ const LigatedSquare: React.FC<LigatedSquareProps> = ({ className = "" }) => (
         y2="535.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0.110577" stop-color="#D4EEFF" stop-opacity="0.01" />
-        <stop offset="0.375" stop-color="#B2E1FF" stop-opacity="0.01" />
-        <stop offset="1" stop-color="#62C2FE" stop-opacity="0.01" />
+        <stop offset="0.110577" stopColor="#D4EEFF" stopOpacity="0.01" />
+        <stop offset="0.375" stopColor="#B2E1FF" stopOpacity="0.01" />
+        <stop offset="1" stopColor="#62C2FE" stopOpacity="0.01" />
       </linearGradient>
     </defs>
   </svg>

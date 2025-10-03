@@ -440,9 +440,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="525.795"
         height="477.187"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -475,9 +475,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="444.901"
         height="367.867"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -496,9 +496,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="504.309"
         height="634.852"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -517,9 +517,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="439.401"
         height="412.129"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -538,9 +538,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="454.044"
         height="432.144"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -559,9 +559,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="454.044"
         height="432.144"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -580,9 +580,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="100.483"
         height="152.365"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -601,9 +601,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="100.483"
         height="152.365"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -622,9 +622,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         width="100.483"
         height="152.365"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -644,8 +644,8 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         y2="554.984"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#0D0D0D" />
-        <stop offset="0.713343" stop-color="#11151C" />
+        <stop stopColor="#0D0D0D" />
+        <stop offset="0.713343" stopColor="#11151C" />
       </linearGradient>
       <radialGradient
         id="paint1_radial_99_1845"
@@ -655,9 +655,9 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         gradientTransform="matrix(46.9482 165.907 -164.048 47.6158 315.867 317.221)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#F37C55" />
-        <stop offset="0.370953" stop-color="#C5491F" />
-        <stop offset="1" stop-color="#EE4B2E" />
+        <stop stopColor="#F37C55" />
+        <stop offset="0.370953" stopColor="#C5491F" />
+        <stop offset="1" stopColor="#EE4B2E" />
       </radialGradient>
       <radialGradient
         id="paint2_radial_99_1845"
@@ -667,8 +667,8 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         gradientTransform="matrix(5.90977 46.114 -19.3544 2.49104 199.859 233.077)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#58BAF6" />
-        <stop offset="1" stop-color="#94D6FF" stop-opacity="0" />
+        <stop stopColor="#58BAF6" />
+        <stop offset="1" stopColor="#94D6FF" stopOpacity="0" />
       </radialGradient>
       <radialGradient
         id="paint3_radial_99_1845"
@@ -678,8 +678,8 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         gradientTransform="matrix(5.90977 46.114 -19.3544 2.49104 289.859 203.076)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#58BAF6" />
-        <stop offset="1" stop-color="#94D6FF" stop-opacity="0" />
+        <stop stopColor="#58BAF6" />
+        <stop offset="1" stopColor="#94D6FF" stopOpacity="0" />
       </radialGradient>
       <radialGradient
         id="paint4_radial_99_1845"
@@ -689,8 +689,8 @@ const GlobeIllustration: React.FC<GlobeIllustrationProps> = ({
         gradientTransform="matrix(5.90977 46.114 -19.3544 2.49104 369.86 203.076)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#58BAF6" />
-        <stop offset="1" stop-color="#94D6FF" stop-opacity="0" />
+        <stop stopColor="#58BAF6" />
+        <stop offset="1" stopColor="#94D6FF" stopOpacity="0" />
       </radialGradient>
     </defs>
   </svg>
