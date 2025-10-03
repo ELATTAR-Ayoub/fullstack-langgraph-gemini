@@ -134,7 +134,14 @@ const mdComponents = {
   ul: ({ className, children, ordered, ...props }: MdComponentProps) => {
     const { ordered: _ignored, ...safeProps } = props; // remove ordered
     return (
-      <ul className={cn(styles.list, "list-disc", className)} {...safeProps}>
+      <ul
+        className={cn(
+          styles.list,
+          "list-disc break-all whitespace-normal",
+          className
+        )}
+        {...safeProps}
+      >
         {children}
       </ul>
     );
@@ -142,13 +149,23 @@ const mdComponents = {
   ol: ({ className, children, ordered, ...props }: MdComponentProps) => {
     const { ordered: _ignored, ...safeProps } = props; // remove ordered
     return (
-      <ol className={cn(styles.list, "list-decimal", className)} {...safeProps}>
+      <ol
+        className={cn(
+          styles.list,
+          "list-decimal break-all whitespace-normal",
+          className
+        )}
+        {...safeProps}
+      >
         {children}
       </ol>
     );
   },
   li: ({ className, children, ...props }: MdComponentProps) => (
-    <li className={cn(styles.list, className)} {...props}>
+    <li
+      className={cn(styles.list, className, "break-all whitespace-normal")}
+      {...props}
+    >
       {children}
     </li>
   ),
