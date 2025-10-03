@@ -21,11 +21,11 @@ export default function Home() {
   return (
     <div
       className={cn(
-        " relative w-full h-full border border-secondary-foreground/10 shadow flex flex-col ",
+        " relative w-full h-full border border-secondary-foreground/10 shadow flex flex-col overflow-hidden ",
         styles.sectionsBorderRadius
       )}
     >
-      <div className="flex-1 overflow-y-auto w-full">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden w-full">
         {/* Header */}
         <Header />
 

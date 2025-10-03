@@ -211,6 +211,12 @@ const CustomInfiniteMovingCards = ({
 }) => {
   return (
     <div className="relative overflow-hidden">
+      {/* Left shadow gradient */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+
+      {/* Right shadow gradient */}
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
       <div
         className="flex gap-8 hover:[animation-play-state:paused]"
         style={{
@@ -303,12 +309,10 @@ export default function Testimonials() {
 
   return (
     <section className={"Section"}>
-      <div className="container mx-auto px-4 flex flex-col gap-8">
+      <div className="container max-w-full mx-auto flex flex-col gap-8">
         {/* Header Content */}
         <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">
-          <p
-            className={`${styles.Xsmall} max-w-fit text-center p-2 header-special-title-shadow bg-accent/5 rounded-full shadow border border-border/25 mx-auto`}
-          >
+          <p className={`${styles.Xsmall} header-special-title`}>
             Testimonials from our users
           </p>
 
@@ -322,7 +326,7 @@ export default function Testimonials() {
         </div>
 
         {/* 3 Rows of Infinite Moving Cards */}
-        <div className="mb-12 space-y-8">
+        <div className="space-y-8">
           <style jsx>{`
             @keyframes scroll-left {
               from {
@@ -358,6 +362,11 @@ export default function Testimonials() {
           {/* Row 3: Left to Right */}
           <CustomInfiniteMovingCards items={testimonials} direction="left" />
         </div>
+
+        {/* CTA */}
+        {/* <Button onClick={handleStartNewChat} className="w-fit mx-auto">
+          Get Started Now <ArrowRight />
+        </Button> */}
       </div>
     </section>
   );
