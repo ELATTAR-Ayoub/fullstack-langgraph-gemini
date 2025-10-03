@@ -79,7 +79,7 @@ const Footer = () => {
     <footer
       className={`relative w-full ${styles.padding} !pt-24 overflow-hidden `}
     >
-      <div className={`relative mx-auto  `}>
+      <div className={`relative mx-auto max-w-6xl  `}>
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12 ">
           {/* Brand Section */}

@@ -29,7 +29,10 @@ export function SidebarHead() {
     <SidebarMenu>
       <SidebarMenuItem>
         <div className="flex items-center justify-between gap-2 w-full mb-1">
-          <Link href="/" className="w-full">
+          <Link
+            href="/"
+            className="w-full cursor-pointer hover:scale-105 transition-all duration-300"
+          >
             <LogoExtended />
           </Link>
           <SidebarTrigger />

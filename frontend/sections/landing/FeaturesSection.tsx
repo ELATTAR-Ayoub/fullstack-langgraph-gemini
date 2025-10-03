@@ -949,11 +949,12 @@ export default function Home() {
               >
                 {Array.from({ length: 25 }, (_, index) => {
                   const icon = row[index];
-                  // Create different opacity levels: 25%, 50%, and 100%
-                  const getOpacity = () => {
-                    const random = Math.random();
-                    if (random < 0.3) return "opacity-25"; // 25% opacity
-                    if (random < 0.6) return "opacity-50"; // 50% opacity
+                  // Create different opacity levels: 25%, 50%, and 100% using deterministic approach
+                  const getOpacity = (index: number) => {
+                    // Use index-based deterministic approach instead of Math.random()
+                    const seed = (rowIndex * 25 + index) % 3;
+                    if (seed === 0) return "opacity-25"; // 25% opacity
+                    if (seed === 1) return "opacity-50"; // 50% opacity
                     return ""; // 100% opacity (default)
                   };
 
@@ -962,7 +963,7 @@ export default function Home() {
                       key={index}
                       variant="accent"
                       className={`flex items-center gap-2 p-6 light-reflection-shadow ${
-                        !icon ? getOpacity() : ""
+                        !icon ? getOpacity(index) : ""
                       }`}
                       size="icon"
                     >

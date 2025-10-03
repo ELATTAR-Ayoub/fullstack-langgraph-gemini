@@ -131,16 +131,22 @@ const mdComponents = {
       </Badge>
     );
   },
-  ul: ({ className, children, ...props }: MdComponentProps) => (
-    <ul className={cn(styles.list, "list-disc")} {...props}>
-      {children}
-    </ul>
-  ),
-  ol: ({ className, children, ...props }: MdComponentProps) => (
-    <ol className={cn(styles.list, "list-decimal", className)} {...props}>
-      {children}
-    </ol>
-  ),
+  ul: ({ className, children, ordered, ...props }: MdComponentProps) => {
+    const { ordered: _ignored, ...safeProps } = props; // remove ordered
+    return (
+      <ul className={cn(styles.list, "list-disc", className)} {...safeProps}>
+        {children}
+      </ul>
+    );
+  },
+  ol: ({ className, children, ordered, ...props }: MdComponentProps) => {
+    const { ordered: _ignored, ...safeProps } = props; // remove ordered
+    return (
+      <ol className={cn(styles.list, "list-decimal", className)} {...safeProps}>
+        {children}
+      </ol>
+    );
+  },
   li: ({ className, children, ...props }: MdComponentProps) => (
     <li className={cn(styles.list, className)} {...props}>
       {children}
@@ -359,7 +365,7 @@ export function ChatMessagesView({
         <div
           className={cn(
             styles.padding,
-            " w-full space-y-2 max-w-4xl mx-auto pt-16 pb-[124px] md:pb-[124px] lg:pb-[124px]"
+            " w-full space-y-2 max-w-4xl mx-auto pt-16 pb-[148px] md:pb-[148px] lg:pb-[148px]"
           )}
         >
           {/* Render all messages with appropriate bubble components */}

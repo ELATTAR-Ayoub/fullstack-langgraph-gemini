@@ -112,7 +112,7 @@ export function InputBar({
             setInputValue(e.target.value)
           }
           onKeyDown={handleKeyPress}
-          className="w-full h-full min-h-[124px] max-h-[124px] border-none !outline-none shadow-none resize-none pr-14"
+          className="w-full h-full min-h-[96px] max-h-[96px] border-none !outline-none shadow-none resize-none pr-14 mb-12 md:mb-10 focus-visible:!ring-[0px]"
           placeholder="Type your message here..."
           disabled={isLoading}
         />
