@@ -897,7 +897,7 @@ export default function Home() {
 
         {/* Top Right Card */}
         <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl lg:col-span-2 lg:row-span-4 overflow-hidden">
-          <div className="absolute top-4 md:top-auto md:bottom-4 left-4 max-w-lg z-[11]">
+          <div className="absolute bottom-4 left-4 max-w-lg z-[11]">
             <h3 className={`${styles.large} text-balance`}>
               Source Transparency
             </h3>
