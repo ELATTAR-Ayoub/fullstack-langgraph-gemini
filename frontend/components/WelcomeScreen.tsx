@@ -1,10 +1,19 @@
 "use client";
 
+// Third-party library imports
 import { CatIcon, BotIcon, UtensilsIcon } from "lucide-react";
-import SplitText from "@/components/gsap/SplitText";
-import { cn } from "@/lib/utils";
-import styles from "@/styles";
+
+// Internal imports - context
 import { WelcomeScreenProps, SuggestionExample } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
+
+// Internal imports - components
+import SplitText from "@/components/gsap/SplitText";
 import AnimatedContent from "./gsap/AnimatedContent";
 
 export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {

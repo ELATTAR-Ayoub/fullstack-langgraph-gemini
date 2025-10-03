@@ -1,7 +1,10 @@
-"use client";
-
+// React/Next.js imports
 import React, { createContext, useContext, useState, useEffect } from "react";
+
+// Third-party library imports
 import { Message } from "@langchain/langgraph-sdk";
+
+// Internal imports - types
 import { ChatRoom, ChatRoomsContextType, ProcessedEvent } from "./types";
 
 const ChatRoomContext = createContext<ChatRoomsContextType | undefined>(
@@ -183,6 +186,7 @@ export function ChatRoomProvider({ children }: { children: React.ReactNode }) {
       );
     },
     getCurrentChatRoom: () => currentRoom,
+    isLoading: false,
   };
 
   return (

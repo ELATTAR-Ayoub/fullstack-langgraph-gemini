@@ -1,13 +1,23 @@
-// styles
-import styles from "@/styles";
-import { cn } from "@/lib/utils";
-import AnimatedContent from "./gsap/AnimatedContent";
-import Logo from "@/public/svg/logo_extended";
-import { Button } from "./ui/button";
-import Star from "@/public/svg/star";
+// React/Next.js imports
 import Link from "next/link";
-import { useChatRooms } from "@/context";
 import { useRouter } from "next/navigation";
+
+// Internal imports - context
+import { useChatRooms } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
+
+// Internal imports - components
+import { Button } from "./ui/button";
+import AnimatedContent from "./gsap/AnimatedContent";
+
+// Internal imports - assets
+import Logo from "@/public/svg/logo_extended";
+import Star from "@/public/svg/star";
 
 const Header = () => {
   const router = useRouter();

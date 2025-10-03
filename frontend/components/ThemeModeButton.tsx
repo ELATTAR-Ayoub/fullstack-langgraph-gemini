@@ -1,11 +1,20 @@
 "use client";
 
+// React/Next.js imports
 import { useState, useRef, useEffect } from "react";
+
+// Third-party library imports
+import { MoonIcon, SunIcon, MonitorIcon } from "lucide-react";
+
+// Internal imports - context
+import { useTheme } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - components
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import { MoonIcon, SunIcon, MonitorIcon } from "lucide-react";
-import { useTheme } from "@/context";
 
 export function ThemeModeButton() {
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] =

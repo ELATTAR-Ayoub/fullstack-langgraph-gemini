@@ -1,6 +1,9 @@
 "use client";
 
+// React/Next.js imports
 import React, { createContext, useContext, useEffect, useState } from "react";
+
+// Third-party library imports
 import { Theme, ThemeContextType } from "./types";
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

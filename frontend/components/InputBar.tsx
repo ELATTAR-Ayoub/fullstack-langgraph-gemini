@@ -1,10 +1,9 @@
 "use client";
 
+// React/Next.js imports
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Toggle } from "@/components/ui/toggle";
-import { cn } from "@/lib/utils";
+
+// Third-party library imports
 import {
   CpuIcon,
   Globe,
@@ -12,8 +11,20 @@ import {
   SettingsIcon,
   StopCircleIcon,
 } from "lucide-react";
-import styles from "@/styles";
+
+// Internal imports - context
 import { InputBarProps } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
+
+// Internal imports - components
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Toggle } from "@/components/ui/toggle";
 import {
   AlertDialog,
   AlertDialogAction,

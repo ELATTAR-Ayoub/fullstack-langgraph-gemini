@@ -276,4 +276,30 @@
       inset 0px 8px 10px 0px rgba(150, 218, 251, 0.7) !important;
     /* background: radial-gradient(circle at center, #c6e9ff 0%, #6ec7ff 100%); */
   }
+
+  .features-section-intelligent-box-shadow {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  }
+
+  .features-section-source-box-shadow {
+    background: radial-gradient(
+      circle at top center,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  .features-section-globe-box-shadow {
+    background: radial-gradient(
+      circle at bottom right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  /* Main */
+
+  .Section {
+    @apply relative flex items-center justify-center flex-col gap-8 p-4 pt-16 lg:pt-24;
+  }
 }

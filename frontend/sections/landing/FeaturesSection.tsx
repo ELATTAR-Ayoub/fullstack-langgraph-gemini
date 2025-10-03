@@ -1,8 +1,10 @@
 "use client";
 
+// React/Next.js imports
 import { useRouter } from "next/navigation";
-import { useChatRooms } from "@/context";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+
+// Third-party library imports
 import {
   BookOpen,
   Globe,
@@ -20,20 +22,21 @@ import {
   Facebook,
   ArrowRight,
 } from "lucide-react";
-import Logo from "@/public/svg/logo_extended";
-import AnimatedContent from "@/components/gsap/AnimatedContent";
-import SplitText from "@/components/gsap/SplitText";
+import { motion } from "motion/react";
+
+// Internal imports - context
+import { useChatRooms } from "@/context";
+
+// Internal imports - utilities
 import { cn } from "@/lib/utils";
+
+// Internal imports - styles
 import styles from "@/styles";
-import Star from "@/public/svg/star";
-import Header from "@/components/Header";
-import { InputBar } from "@/components/InputBar";
-import HeroSection from "@/sections/landing/HeroSection";
-import LigatedSquare from "@/public/svg/landing/lighted-square";
+
+// Internal imports - components
+import { Button } from "@/components/ui/button";
 import { Boxes } from "@/components/gsap/background-boxes";
-import Logo3DFloating from "@/public/svg/landing/logo-3d-floating";
 import LightRays from "@/components/gsap/LightRays";
-import WikipediaLogoStand from "@/public/svg/landing/wikipedia-logo-stand";
 import {
   MotionGrid,
   MotionGridCells,
@@ -43,9 +46,13 @@ import {
   RotatingText,
   RotatingTextContainer,
 } from "@/components/animate-ui/primitives/texts/rotating";
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import GlobeIllustration from "@/public/svg/landing/globe-illustratio";
+
+// Internal imports - assets
+import LigatedSquare from "@/public/svg/landing/lighted-square";
+import Logo3DFloating from "@/public/svg/landing/logo-3d-floating";
+import WikipediaLogoStand from "@/public/svg/landing/wikipedia-logo-stand";
+import GlobeIllustration from "@/public/svg/landing/globe-illustration";
+import GlobeIllustrationLines from "@/public/svg/landing/globe-illustration-lines";
 
 const importingFrames = [
   [[2, 2]],
@@ -839,25 +846,20 @@ export default function Home() {
       ,
       ,
     ],
+    row5: [, , , , ,],
+    row6: [, , , , ,],
+    row7: [, , , , ,],
   };
 
   return (
-    <section
-      className={cn(
-        "relative flex flex-col gap-4 p-4 py-16 lg:py-24",
-        styles.flexStart,
-        "relative"
-      )}
-    >
+    <section className={"Section"}>
       {/* Header Content */}
       <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">
-        <h2
-          className={`${styles.H2} text-3xl sm:text-4xl lg:text-5xl text-balance lg:text-center`}
-        >
+        <h2 className={`${styles.SectionH2} md:text-center`}>
           Everything You Need for Deep Research
         </h2>
 
-        <p className={`${styles.p} lg:text-center`}>
+        <p className={`${styles.p} md:text-center`}>
           Transform any question into a research masterpiece. Our AI doesn't
           just search, it thinks, reflects, and synthesizes information from
           across the web.
@@ -868,7 +870,7 @@ export default function Home() {
       <div className="relative grid grid-cols-1 lg:grid-cols-6 lg:grid-rows-4 gap-4 w-full max-w-6xl mx-auto">
         {/* Top Left Card */}
         <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl lg:col-span-4 lg:row-span-2 overflow-hidden">
-          <div className="absolute top-4 left-4 max-w-lg z-10">
+          <div className="absolute top-4 left-4 max-w-lg z-[11]">
             <h3 className={`${styles.large} text-balance`}>
               Intelligent Reasoning
             </h3>
@@ -883,20 +885,23 @@ export default function Home() {
           <Boxes className="center-in-parent scale-125 opacity-50" />
           <LigatedSquare className="absolute -top-[200px] left-[48.5%] -translate-x-1/2 pointer-events-none z-[2] opacity-95 " />
           {/* <Logo3DFloating className="absolute size-42 top-12 right-[70px]  animate-float hover:scale-105 transition-all duration-300" /> */}
-
           <MotionGridDemo className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float hover:scale-105 transition-all duration-300" />
+
+          {/* shadow */}
+          <div className="absolute inset-0 features-section-intelligent-box-shadow z-10 pointer-events-none" />
         </div>
 
         {/* Top Right Card */}
         <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl lg:col-span-2 lg:row-span-4 overflow-hidden">
-          <div className="absolute bottom-4 left-4 max-w-lg z-10">
+          <div className="absolute top-4 md:top-auto md:bottom-4 left-4 max-w-lg z-[11]">
             <h3 className={`${styles.large} text-balance`}>
               Source Transparency
             </h3>
             <p
               className={`${styles.small} font-normal text-balance mt-2 text-white/50`}
             >
-              Every answer includes detailed sources and research timeline.
+              Every answer includes detailed sources and research timeline. All
+              sources are linked and can be verified.
             </p>
           </div>
 
@@ -911,7 +916,7 @@ export default function Home() {
             mouseInfluence={1}
             noiseAmount={0.1}
             distortion={0}
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-10 sss"
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-[11] sss"
           />
 
           <div className="absolute top-1/2 md:top-24 left-1/2 -translate-y-1/2 md:translate-y-0 -translate-x-1/2 flex flex-col gap-2 overflow-hidden w-full">
@@ -929,7 +934,13 @@ export default function Home() {
                     ? "opacity-75" // Row 2: 75% opacity
                     : rowIndex === 2
                     ? "opacity-50" // Row 3: 50% opacity
-                    : "opacity-30" // Row 4: 30% opacity
+                    : rowIndex === 3
+                    ? "opacity-30" // Row 4: 50% opacity
+                    : rowIndex === 4
+                    ? "opacity-25 hidden md:flex" // Row 5: 5% opacity
+                    : rowIndex === 5
+                    ? "opacity-10 hidden md:flex" // Row 6: 0% opacity
+                    : "opacity-5 hidden md:flex" // Row 7: 0% opacity
                 }`}
               >
                 {Array.from({ length: 25 }, (_, index) => {
@@ -960,12 +971,14 @@ export default function Home() {
           </div>
 
           {/* Wikipedia Logo */}
-          <WikipediaLogoStand className="absolute top-1/2 md:top-auto md:bottom-24 -translate-y-1/2 md:translate-y-0 left-1/2 -translate-x-1/2 animate-float" />
+          <WikipediaLogoStand className="absolute top-1/2 md:top-auto md:bottom-24 -translate-y-1/2 md:translate-y-0 left-1/2 -translate-x-1/2 animate-float z-[11]" />
+          {/* shadow */}
+          <div className="absolute inset-0 features-section-source-box-shadow z-10 pointer-events-none" />
         </div>
 
         {/* Bottom Full Width Card */}
         <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl p-6 lg:col-span-4 lg:row-span-2 overflow-hidden">
-          <div className="absolute top-4 left-4 max-w-lg z-10">
+          <div className="absolute top-4 left-4 max-w-lg z-[11]">
             <h3 className={`${styles.large} text-balance`}>
               Research The Globe
             </h3>
@@ -978,7 +991,10 @@ export default function Home() {
           </div>
 
           {/* Illustrations */}
-          <GlobeIllustration className="absolute top-16 md:top-0 -right-32 md:-right-52 size-[400px] md:size-[550px]  hover:scale-105 transition-all duration-300" />
+          <GlobeIllustration className="absolute top-0 md:-top-10 -right-24 md:-right-14 size-[400px] md:size-[450px]  hover:scale-105 transition-all duration-300 z-[2]" />
+          <GlobeIllustrationLines className="absolute center-in-parent size-[900px] opacity-45 " />
+          {/* shadow */}
+          <div className="absolute inset-0 features-section-globe-box-shadow z-10 pointer-events-none" />
         </div>
       </div>
 

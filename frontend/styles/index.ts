@@ -38,6 +38,8 @@
   H2: "scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0 text-balance",
   H3: "scroll-m-20 text-2xl font-semibold tracking-tight text-balance",
   H4: "scroll-m-20 text-xl font-semibold tracking-tight text-balance",
+  SectionH2:
+    "scroll-m-20 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight first:mt-0 text-balance",
   p: " text-sm sm:text-base leading-7 [&:not(:first-child)]:my-3 text-balance",
   large: "text-lg font-semibold",
   small: "text-sm leading-none font-medium",
@@ -51,6 +53,7 @@
   inlineCode:
     "bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
   list: "md:my-6 my-3 md:ml-6 ml-3 list-disc [&>li]:mt-2",
+  link: " text-sm leading-none text-blue-500 hover:text-blue-400 hover:underline transition-colors duration-300",
 
   // Table styles based on shadcn/ui table component
   table: "w-full caption-bottom text-sm",

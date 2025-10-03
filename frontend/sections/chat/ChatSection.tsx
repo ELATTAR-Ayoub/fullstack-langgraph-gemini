@@ -1,8 +1,20 @@
 ﻿"use client";
 
+// React/Next.js imports
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
+
+// Third-party library imports
 import { useStream } from "@langchain/langgraph-sdk/react";
 import type { Message } from "@langchain/langgraph-sdk";
-import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  PlusIcon,
+  SettingsIcon,
+  Trash2Icon,
+  AlertTriangle,
+} from "lucide-react";
+
+// Internal imports - context
 import {
   ProcessedEvent,
   BackendResponseEvent,
@@ -12,24 +24,21 @@ import {
   LoggedBackendRequest,
   LoggedCancelRequest,
   ChatThread,
-  WelcomeScreenProps,
-  InputBarProps,
-  ChatMessagesViewProps,
 } from "@/context";
+import { useChatRooms } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
+
+// Internal imports - components
 import { WelcomeScreen } from "@/components/WelcomeScreen";
 import { ChatMessagesView } from "@/components/ChatMessagesView";
 import { InputBar } from "@/components/InputBar";
+import { ThemeModeButton } from "@/components/ThemeModeButton";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import styles from "@/styles";
-import {
-  PlusIcon,
-  SettingsIcon,
-  Trash2Icon,
-  AlertTriangle,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogClose,
@@ -48,13 +57,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ThemeModeButton } from "@/components/ThemeModeButton";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
-import { useChatRooms } from "@/context";
-import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import AnimatedContent from "@/components/gsap/AnimatedContent";
 
 // Configuration objects for easy editing
 const SEARCH_DEPTH_OPTIONS = {

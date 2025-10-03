@@ -1,26 +1,14 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Loader2,
-  Activity,
-  Info,
-  Search,
-  TextSearch,
-  Brain,
-  Pen,
-  ChevronDown,
-  ChevronUp,
-  Globe,
-} from "lucide-react";
+// React/Next.js imports
 import { useEffect, useState } from "react";
 
-import styles from "@/styles";
+// Third-party library imports
+import { Loader2, Activity, TextSearch, Brain, Pen, Globe } from "lucide-react";
+
+// Internal imports - utilities
 import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
 
 export interface ProcessedEvent {
   title: string;
@@ -122,7 +110,7 @@ export function ActivityTimeline({
                 <p className="text-sm text-primary font-medium">
                   {eventItem.title}
                 </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed ellipsis-on-1line">
                   {typeof eventItem.data === "string"
                     ? eventItem.data
                     : Array.isArray(eventItem.data)

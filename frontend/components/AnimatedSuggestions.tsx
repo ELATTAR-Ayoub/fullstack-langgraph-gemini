@@ -1,7 +1,12 @@
 "use client";
 
+// React/Next.js imports
 import React, { useRef, useEffect, useState, useCallback } from "react";
+
+// Third-party library imports
 import { gsap } from "gsap";
+
+// Internal imports - styles
 import styles from "@/styles";
 
 interface Suggestion {

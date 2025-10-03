@@ -1,14 +1,27 @@
+// React/Next.js imports
 import { useRouter } from "next/navigation";
-import { useChatRooms } from "@/context";
-import { Button } from "@/components/ui/button";
+
+// Third-party library imports
 import { SearchIcon, ArrowDown } from "lucide-react";
+
+// Internal imports - context
+import { useChatRooms } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
+
+// Internal imports - components
+import { Button } from "@/components/ui/button";
+import { InputBar } from "@/components/InputBar";
 import AnimatedContent from "@/components/gsap/AnimatedContent";
 import SplitText from "@/components/gsap/SplitText";
-import styles from "@/styles";
-import Star from "@/public/svg/star";
-import { InputBar } from "@/components/InputBar";
-import { cn } from "@/lib/utils";
 import LiquidEther from "@/components/gsap/LiquidEther";
+
+// Internal imports - assets
+import Star from "@/public/svg/star";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -111,9 +124,9 @@ export default function HeroSection() {
         </AnimatedContent>
 
         {/* Hero Content */}
-        <div className="flex flex-col md:gap-2">
+        <div className="flex flex-col md:gap-2 ">
           <h1
-            className={`${styles.heroHeading} font-normal flex flex-col md:items-center gap-0`}
+            className={`${styles.heroHeading} font-normal flex flex-col md:items-center gap-0 `}
           >
             <SplitText
               text="Stop Searching."

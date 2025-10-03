@@ -1,867 +1,237 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useChatRooms } from "@/context";
-import { Button } from "@/components/ui/button";
-import {
-  BookOpen,
-  Globe,
-  Calendar,
-  Newspaper,
-  Users,
-  FileText,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Youtube,
-  Github,
-  Rss,
-  TrendingUp,
-  Facebook,
-  ArrowRight,
-} from "lucide-react";
-import Logo from "@/public/svg/logo_extended";
-import AnimatedContent from "@/components/gsap/AnimatedContent";
-import SplitText from "@/components/gsap/SplitText";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import styles from "@/styles";
-import Star from "@/public/svg/star";
-import Header from "@/components/Header";
-import { InputBar } from "@/components/InputBar";
-import HeroSection from "@/sections/landing/HeroSection";
-import LigatedSquare from "@/public/svg/landing/lighted-square";
-import { Boxes } from "@/components/gsap/background-boxes";
-import Logo3DFloating from "@/public/svg/landing/logo-3d-floating";
-import LightRays from "@/components/gsap/LightRays";
-import WikipediaLogoStand from "@/public/svg/landing/wikipedia-logo-stand";
-import {
-  MotionGrid,
-  MotionGridCells,
-  type Frames,
-} from "@/components/animate-ui/primitives/animate/motion-grid";
-import {
-  RotatingText,
-  RotatingTextContainer,
-} from "@/components/animate-ui/primitives/texts/rotating";
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import GlobeIllustration from "@/public/svg/landing/globe-illustratio";
+import Image from "next/image";
 
-const importingFrames = [
-  [[2, 2]],
-  [
-    [1, 2],
-    [2, 1],
-    [2, 3],
-    [3, 2],
-  ],
-  [
-    [2, 2],
-    [0, 2],
-    [1, 1],
-    [1, 3],
-    [2, 0],
-    [2, 4],
-    [3, 1],
-    [3, 3],
-    [4, 2],
-  ],
-  [
-    [0, 1],
-    [0, 3],
-    [1, 0],
-    [1, 2],
-    [1, 4],
-    [2, 1],
-    [2, 3],
-    [3, 0],
-    [3, 2],
-    [3, 4],
-    [4, 1],
-    [4, 3],
-  ],
-  [
-    [0, 0],
-    [0, 2],
-    [0, 4],
-    [1, 1],
-    [1, 3],
-    [2, 0],
-    [2, 2],
-    [2, 4],
-    [3, 1],
-    [3, 3],
-    [4, 0],
-    [4, 2],
-    [4, 4],
-  ],
-  [
-    [0, 1],
-    [0, 3],
-    [1, 0],
-    [1, 2],
-    [1, 4],
-    [2, 1],
-    [2, 3],
-    [3, 0],
-    [3, 2],
-    [3, 4],
-    [4, 1],
-    [4, 3],
-  ],
-  [
-    [0, 0],
-    [0, 2],
-    [0, 4],
-    [1, 1],
-    [1, 3],
-    [2, 0],
-    [2, 4],
-    [3, 1],
-    [3, 3],
-    [4, 0],
-    [4, 2],
-    [4, 4],
-  ],
-  [
-    [0, 1],
-    [1, 0],
-    [3, 0],
-    [4, 1],
-    [0, 3],
-    [1, 4],
-    [3, 4],
-    [4, 3],
-  ],
-  [
-    [0, 0],
-    [0, 4],
-    [4, 0],
-    [4, 4],
-  ],
-  [],
-] as Frames;
+interface FeatureItem {
+  id: string;
+  title: string;
+  description: string;
+  visualContent: {
+    img: string;
+  };
+}
 
-const arrowDownFrames = [
-  [[2, 0]],
-  [
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [2, 1],
-  ],
-  [
-    [2, 0],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [2, 2],
-  ],
-  [
-    [2, 0],
-    [2, 1],
-    [1, 2],
-    [2, 2],
-    [3, 2],
-    [2, 3],
-  ],
-  [
-    [2, 1],
-    [2, 2],
-    [1, 3],
-    [2, 3],
-    [3, 3],
-    [2, 4],
-  ],
-  [
-    [2, 2],
-    [2, 3],
-    [1, 4],
-    [2, 4],
-    [3, 4],
-  ],
-  [
-    [2, 3],
-    [2, 4],
-  ],
-  [[2, 4]],
-  [],
-] as Frames;
-
-const arrowUpFrames = [
-  [[2, 4]],
-  [
-    [1, 4],
-    [2, 4],
-    [3, 4],
-    [2, 3],
-  ],
-  [
-    [2, 4],
-    [1, 3],
-    [2, 3],
-    [3, 3],
-    [2, 2],
-  ],
-  [
-    [2, 4],
-    [2, 3],
-    [1, 2],
-    [2, 2],
-    [3, 2],
-    [2, 1],
-  ],
-  [
-    [2, 3],
-    [2, 2],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [2, 0],
-  ],
-  [
-    [2, 2],
-    [2, 1],
-    [1, 0],
-    [2, 0],
-    [3, 0],
-  ],
-  [
-    [2, 1],
-    [2, 0],
-  ],
-  [[2, 0]],
-  [],
-] as Frames;
-
-const syncingFrames = [...arrowDownFrames, ...arrowUpFrames] as Frames;
-
-const searchingFrames = [
-  [
-    [1, 0],
-    [0, 1],
-    [1, 1],
-    [2, 1],
-    [1, 2],
-  ],
-  [
-    [2, 0],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [2, 2],
-  ],
-  [
-    [3, 0],
-    [2, 1],
-    [3, 1],
-    [4, 1],
-    [3, 2],
-  ],
-  [
-    [3, 1],
-    [2, 2],
-    [3, 2],
-    [4, 2],
-    [3, 3],
-  ],
-  [
-    [3, 2],
-    [2, 3],
-    [3, 3],
-    [4, 3],
-    [3, 4],
-  ],
-  [
-    [1, 2],
-    [0, 3],
-    [1, 3],
-    [2, 3],
-    [1, 4],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [1, 0],
-    [1, 2],
-    [2, 0],
-    [2, 1],
-    [2, 2],
-  ],
-  [],
-] as Frames;
-
-const busyFrames = [
-  [
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [1, 2],
-    [4, 1],
-    [4, 2],
-    [4, 3],
-  ],
-  [
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [2, 3],
-    [4, 2],
-    [4, 3],
-    [4, 4],
-  ],
-  [
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [3, 4],
-    [4, 2],
-    [4, 3],
-    [4, 4],
-  ],
-  [
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [2, 3],
-    [4, 2],
-    [4, 3],
-    [4, 4],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [1, 2],
-    [4, 2],
-    [4, 3],
-    [4, 4],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [2, 1],
-    [4, 1],
-    [4, 2],
-    [4, 3],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [3, 0],
-    [4, 0],
-    [4, 1],
-    [4, 2],
-  ],
-  [
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [2, 1],
-    [4, 0],
-    [4, 1],
-    [4, 2],
-  ],
-] as Frames;
-
-const savingFrames = [
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [0, 4],
-    [1, 0],
-    [1, 1],
-    [1, 2],
-    [1, 3],
-    [2, 0],
-    [2, 1],
-    [2, 2],
-    [2, 3],
-    [2, 4],
-    [3, 0],
-    [3, 1],
-    [3, 2],
-    [3, 3],
-    [4, 0],
-    [4, 1],
-    [4, 2],
-    [4, 3],
-    [4, 4],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [1, 0],
-    [1, 1],
-    [1, 2],
-    [2, 0],
-    [2, 1],
-    [2, 2],
-    [2, 3],
-    [3, 0],
-    [3, 1],
-    [3, 2],
-    [4, 0],
-    [4, 1],
-    [4, 2],
-    [4, 3],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [1, 0],
-    [1, 1],
-    [2, 0],
-    [2, 1],
-    [2, 2],
-    [3, 0],
-    [3, 1],
-    [4, 0],
-    [4, 1],
-    [4, 2],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [1, 4],
-    [0, 4],
-  ],
-  [
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [2, 0],
-    [2, 1],
-    [3, 0],
-    [4, 0],
-    [4, 1],
-    [4, 3],
-    [3, 3],
-    [2, 3],
-    [1, 3],
-    [0, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [1, 4],
-    [0, 4],
-  ],
-  [
-    [0, 0],
-    [2, 0],
-    [4, 0],
-    [4, 2],
-    [3, 2],
-    [2, 2],
-    [1, 2],
-    [0, 2],
-    [4, 3],
-    [3, 3],
-    [2, 3],
-    [1, 3],
-    [0, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [1, 4],
-    [0, 4],
-  ],
-  [
-    [0, 0],
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [4, 1],
-    [3, 1],
-    [2, 1],
-    [1, 1],
-    [0, 1],
-    [4, 2],
-    [3, 2],
-    [2, 2],
-    [1, 2],
-    [0, 2],
-    [4, 3],
-    [3, 3],
-    [2, 3],
-    [1, 3],
-    [0, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [1, 4],
-    [0, 4],
-  ],
-  [
-    [0, 0],
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [4, 1],
-    [3, 1],
-    [2, 1],
-    [1, 1],
-    [0, 1],
-    [4, 2],
-    [3, 2],
-    [2, 2],
-    [1, 2],
-    [0, 2],
-    [4, 3],
-    [3, 3],
-    [2, 3],
-    [1, 3],
-    [0, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [1, 4],
-    [0, 4],
-  ],
-  [
-    [0, 0],
-    [1, 0],
-    [2, 0],
-    [3, 0],
-    [4, 0],
-    [4, 1],
-    [3, 1],
-    [2, 1],
-    [1, 1],
-    [0, 1],
-    [4, 2],
-    [3, 2],
-    [2, 2],
-    [1, 2],
-    [0, 2],
-    [4, 3],
-    [3, 3],
-    [2, 3],
-    [1, 3],
-    [0, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [1, 4],
-    [0, 4],
-  ],
-] as Frames;
-
-const initializingFrames = [
-  [],
-  [
-    [1, 0],
-    [3, 0],
-  ],
-  [
-    [1, 0],
-    [3, 0],
-    [0, 1],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [4, 1],
-  ],
-  [
-    [1, 0],
-    [3, 0],
-    [0, 1],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [4, 1],
-    [0, 2],
-    [1, 2],
-    [2, 2],
-    [3, 2],
-    [4, 2],
-  ],
-  [
-    [1, 0],
-    [3, 0],
-    [0, 1],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [4, 1],
-    [0, 2],
-    [1, 2],
-    [2, 2],
-    [3, 2],
-    [4, 2],
-    [1, 3],
-    [2, 3],
-    [3, 3],
-  ],
-  [
-    [1, 0],
-    [3, 0],
-    [0, 1],
-    [1, 1],
-    [2, 1],
-    [3, 1],
-    [4, 1],
-    [0, 2],
-    [1, 2],
-    [2, 2],
-    [3, 2],
-    [4, 2],
-    [1, 3],
-    [2, 3],
-    [3, 3],
-    [2, 4],
-  ],
-  [
-    [1, 2],
-    [2, 1],
-    [2, 2],
-    [2, 3],
-    [3, 2],
-  ],
-  [[2, 2]],
-  [],
-] as Frames;
-
-const states = {
-  importing: {
-    frames: importingFrames,
-    label: "Processing...",
+const features: FeatureItem[] = [
+  {
+    id: "writing",
+    title: "An expressive writing partner",
+    description:
+      "DeepSearch helps you craft compelling content, from technical documentation to creative writing, with natural language understanding and style adaptation.",
+    visualContent: {
+      img: "/img/landing/writing.jpg",
+    },
   },
-  syncing: {
-    frames: syncingFrames,
-    label: "Generating...",
+  {
+    id: "research",
+    title: "Comprehensive research tools",
+    description:
+      "Gather information from multiple sources, synthesize findings, and present comprehensive research results with source verification and fact-checking.",
+    visualContent: {
+      img: "/img/landing/research.jpg",
+    },
   },
-  searching: {
-    frames: searchingFrames,
-    label: "Searching...",
+  {
+    id: "collaboration",
+    title: "Team collaboration",
+    description:
+      "Share findings, collaborate on research projects, and maintain knowledge bases with real-time synchronization and version control.",
+    visualContent: {
+      img: "/img/landing/collaboration.jpg",
+    },
   },
-  busy: {
-    frames: busyFrames,
-    label: "Reflecting...",
+  {
+    id: "safety",
+    title: "Safer and more accurate",
+    description:
+      "DeepSearch prioritizes safety and accuracy in all responses, with built-in safeguards and fact-checking capabilities.",
+    visualContent: {
+      img: "/img/landing/safety.jpg",
+    },
   },
-  saving: {
-    frames: savingFrames,
-    label: "Saving...",
-  },
-  initializing: {
-    frames: initializingFrames,
-    label: "Finalizing!",
-  },
-};
+];
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+export default function ReasonsSection() {
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const visualRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [autoRotateInterval, setAutoRotateInterval] = useState(7000);
 
-const MotionGridDemo = ({ className }: { className?: string }) => {
-  const [state, setState] = useState<keyof typeof states>("importing");
-
-  const runStates = async () => {
-    while (true) {
-      for (const state of Object.keys(states) as (keyof typeof states)[]) {
-        setState(state);
-        await sleep(3000);
+  // Auto-rotate features every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isAnimating) {
+        setActiveFeature((prev) => (prev + 1) % features.length);
       }
+    }, autoRotateInterval);
+
+    return () => clearInterval(interval);
+  }, [isAnimating, autoRotateInterval]);
+
+  // Animate visual content changes
+  useEffect(() => {
+    if (!visualRef.current || !contentRef.current) return;
+
+    setIsAnimating(true);
+
+    const tl = gsap.timeline({
+      onComplete: () => setIsAnimating(false),
+    });
+
+    // Fade out current content
+    tl.to(contentRef.current, {
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.3,
+      ease: "power2.out",
+    })
+      // Update content and fade in
+      .set(contentRef.current, {
+        src: features[activeFeature].visualContent.img,
+        alt: features[activeFeature].title,
+      })
+      .fromTo(
+        contentRef.current,
+        {
+          opacity: 0,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        }
+      );
+  }, [activeFeature]);
+
+  // Animate description changes
+  useEffect(() => {
+    descriptionRefs.current.forEach((ref, index) => {
+      if (!ref) return;
+
+      if (index === activeFeature) {
+        // Show description with smooth animation
+        gsap.fromTo(
+          ref,
+          {
+            height: 0,
+            opacity: 0,
+            y: -10,
+          },
+          {
+            height: "auto",
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          }
+        );
+      } else {
+        // Hide description with smooth animation
+        gsap.to(ref, {
+          height: 0,
+          opacity: 0,
+          y: -10,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      }
+    });
+  }, [activeFeature]);
+
+  const handleFeatureClick = (index: number) => {
+    if (!isAnimating) {
+      setActiveFeature(index);
     }
   };
 
-  useEffect(() => {
-    runStates();
-  }, []);
-
   return (
-    <motion.button
-      layout
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className={cn(
-        "px-3 h-11 gap-x-3 relative bg-primary inline-flex items-center justify-center rounded-md",
-        className
-      )}
-    >
-      <motion.div layout="preserve-aspect">
-        <MotionGrid
-          gridSize={[5, 5]}
-          frames={states[state].frames}
-          className="w-fit gap-0.5"
-        >
-          <MotionGridCells className="size-[3px] rounded-full aspect-square bg-white/20 dark:bg-black/20 data-[active=true]:bg-white/70 dark:data-[active=true]:bg-black/70" />
-        </MotionGrid>
-      </motion.div>
+    <section className={"Section"}>
+      {/* Main Content */}
 
-      <RotatingTextContainer
-        text={states[state].label}
-        className="absolute left-[46px] top-1/2 -translate-y-1/2"
-      >
-        <RotatingText
-          layout="preserve-aspect"
-          className="text-primary-foreground"
-        />
-      </RotatingTextContainer>
-
-      <span className="invisible opacity-0" aria-hidden>
-        {states[state].label}
-      </span>
-    </motion.button>
-  );
-};
-
-export default function Home() {
-  const router = useRouter();
-  const { createChatRoom, chatRooms } = useChatRooms();
-
-  const handleStartNewChat = () => {
-    const newRoomId = createChatRoom();
-    router.push(`/chat/${newRoomId}`);
-  };
-
-  const sources_logos = {
-    row1: [
-      <Twitter className="w-6 h-6" />,
-      <Facebook className="w-6 h-6" />,
-      ,
-      ,
-      <Github className="w-6 h-6" />,
-      ,
-      <Youtube className="w-6 h-6" />,
-      <Linkedin className="w-6 h-6" />,
-      <Globe className="w-6 h-6" />,
-      ,
-      <Twitter className="w-6 h-6" />,
-      <Facebook className="w-6 h-6" />,
-      ,
-      ,
-      <Github className="w-6 h-6" />,
-      ,
-      <Youtube className="w-6 h-6" />,
-      <Linkedin className="w-6 h-6" />,
-      <Globe className="w-6 h-6" />,
-      ,
-    ],
-    row2: [
-      <BookOpen className="w-6 h-6" />,
-      <Instagram className="w-6 h-6" />,
-      ,
-      <Newspaper className="w-6 h-6" />,
-      ,
-      <FileText className="w-6 h-6" />,
-      ,
-      <Rss className="w-6 h-6" />,
-      <Calendar className="w-6 h-6" />,
-      ,
-      ,
-      ,
-      <BookOpen className="w-6 h-6" />,
-      <Instagram className="w-6 h-6" />,
-      ,
-      <Newspaper className="w-6 h-6" />,
-      ,
-      <FileText className="w-6 h-6" />,
-      ,
-      <Rss className="w-6 h-6" />,
-      <Calendar className="w-6 h-6" />,
-      ,
-      ,
-      ,
-    ],
-    row3: [
-      ,
-      <Users className="w-6 h-6" />,
-      ,
-      <TrendingUp className="w-6 h-6" />,
-      <Globe className="w-6 h-6" />,
-      ,
-      <Twitter className="w-6 h-6" />,
-      ,
-      ,
-      <Linkedin className="w-6 h-6" />,
-      <Youtube className="w-6 h-6" />,
-      <Facebook className="w-6 h-6" />,
-      ,
-      ,
-      ,
-      ,
-      <Users className="w-6 h-6" />,
-      ,
-      <TrendingUp className="w-6 h-6" />,
-      <Globe className="w-6 h-6" />,
-      ,
-      <Twitter className="w-6 h-6" />,
-      ,
-      ,
-      <Linkedin className="w-6 h-6" />,
-      <Youtube className="w-6 h-6" />,
-      <Facebook className="w-6 h-6" />,
-      ,
-      ,
-      ,
-    ],
-    row4: [
-      ,
-      ,
-      ,
-      <Instagram className="w-6 h-6" />,
-      ,
-      ,
-      ,
-      <Globe className="w-6 h-6" />,
-
-      <BookOpen className="w-6 h-6" />,
-      ,
-      ,
-      <FileText className="w-6 h-6" />,
-      ,
-      ,
-      ,
-      ,
-      ,
-      ,
-      ,
-      <Instagram className="w-6 h-6" />,
-      ,
-      ,
-      ,
-      <Globe className="w-6 h-6" />,
-
-      <BookOpen className="w-6 h-6" />,
-      ,
-      ,
-      <FileText className="w-6 h-6" />,
-      ,
-      ,
-      ,
-      ,
-    ],
-  };
-
-  return (
-    <section
-      className={cn(
-        "relative flex flex-col gap-4 p-4 py-16 lg:py-24",
-        styles.flexStart,
-        "relative"
-      )}
-    >
-      {/* Header Content */}
+      {/* Header */}
       <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">
-        <h2
-          className={`${styles.H2} text-3xl sm:text-4xl lg:text-5xl text-balance lg:text-center`}
-        >
-          Expert itelegece for every need
+        <h2 className={`${styles.SectionH2} md:text-center`}>
+          Expert intelligence for everyone
         </h2>
 
-        <p className={`${styles.p} lg:text-center`}>BLA BLA BLA</p>
+        <p className={`${styles.p} md:text-center`}>
+          DeepSearch is smarter across the board, providing more useful
+          responses across math, science, finance, law, and more. DeepSearch
+          uses multiple models to ensure the best results.
+        </p>
       </div>
 
-      {/* Features Content */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-6 lg:grid-rows-4 gap-4 w-full max-w-6xl mx-auto"></div>
+      {/* Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 lg:gap-16 w-full max-w-6xl mx-auto">
+        {/* Left Column - Text Content */}
+        <div className="space-y-8 lg:col-span-3">
+          {/* Feature List */}
+          <div className="space-y-0">
+            {features.map((feature, index) => (
+              <div key={feature.id} className="group">
+                <Button
+                  variant="ghost"
+                  onClick={() => handleFeatureClick(index)}
+                  className={cn(
+                    "w-full justify-start items-start px-0 py-4 h-auto text-left transition-all duration-300 hover:scale-100 hover:bg-transparent opacity-50 hover:opacity-100",
+                    activeFeature === index && " opacity-100"
+                  )}
+                >
+                  <div className="flex flex-col w-full">
+                    <span className="text-base font-medium">
+                      {feature.title}
+                    </span>
+                    <div
+                      ref={(el) => {
+                        descriptionRefs.current[index] = el;
+                      }}
+                      className="overflow-hidden"
+                      style={{ height: 0, opacity: 0 }}
+                    >
+                      <span
+                        className={`${styles.small} font-normal text-muted-foreground w-full text-balance block mt-2`}
+                      >
+                        {feature.description}
+                      </span>
+                    </div>
+                  </div>
+                </Button>
+                {index < features.length - 1 && (
+                  <Separator className="bg-border/50" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column - Visual Content */}
+        <div className="relative lg:col-span-5">
+          <div
+            ref={visualRef}
+            className="relative aspect-video w-full rounded-xl overflow-hidden"
+          >
+            {/* Content area */}
+            <Image
+              ref={contentRef as React.RefObject<HTMLImageElement>}
+              className="w-full object-cover rounded-xl"
+              src={features[activeFeature].visualContent.img}
+              alt={features[activeFeature].title}
+              fill
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

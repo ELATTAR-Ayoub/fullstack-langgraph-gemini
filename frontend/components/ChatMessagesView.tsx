@@ -1,21 +1,32 @@
+// React/Next.js imports
 import type React from "react";
-import type { Message } from "@langchain/langgraph-sdk";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Loader2, Copy, CopyCheck, CopyIcon, CheckIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useState, ReactNode } from "react";
+
+// Third-party library imports
+import type { Message } from "@langchain/langgraph-sdk";
+import { Loader2, Copy, CopyCheck, CopyIcon, CheckIcon } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { ProcessedEvent, ChatMessagesViewProps } from "@/context";
-import { ActivityTimeline } from "@/components/ActivityTimeline";
-import styles from "@/styles";
-import Image from "next/image";
-import BubbleTail from "../public/svg/BubbleTail";
-import CopyButton from "./micro/CopyButton";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import BlurText from "./gsap/BlurText";
+
+// Internal imports - context
+import { ProcessedEvent, ChatMessagesViewProps } from "@/context";
+
+// Internal imports - utilities
+import { cn } from "@/lib/utils";
+
+// Internal imports - styles
+import styles from "@/styles";
+
+// Internal imports - components
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ActivityTimeline } from "@/components/ActivityTimeline";
+import CopyButton from "./micro/CopyButton";
+
+// Internal imports - assets
+import BubbleTail from "../public/svg/BubbleTail";
 
 // Type definition for markdown component props - used for custom markdown rendering
 type MdComponentProps = {

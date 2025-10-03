@@ -1,8 +1,11 @@
 "use client";
 
+// React/Next.js imports
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { ChatRoom, ChatRoomsContextType } from "./types";
 import { useRouter, usePathname } from "next/navigation";
+
+// Internal imports - types
+import { ChatRoom, ChatRoomsContextType } from "./types";
 
 const ChatRoomsContext = createContext<ChatRoomsContextType | undefined>(
   undefined
