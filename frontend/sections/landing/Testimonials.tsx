@@ -325,7 +325,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* 3 Rows of Infinite Moving Cards */}
+        {/* 2 Rows of Infinite Moving Cards */}
         <div className="space-y-8">
           <style jsx>{`
             @keyframes scroll-left {
@@ -360,7 +360,7 @@ export default function Testimonials() {
           />
 
           {/* Row 3: Left to Right */}
-          <CustomInfiniteMovingCards items={testimonials} direction="left" />
+          {/* <CustomInfiniteMovingCards items={testimonials} direction="left" /> */}
         </div>
 
         {/* CTA */}

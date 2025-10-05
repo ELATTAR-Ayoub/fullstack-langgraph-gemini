@@ -53,6 +53,7 @@ import Logo3DFloating from "@/public/svg/landing/logo-3d-floating";
 import WikipediaLogoStand from "@/public/svg/landing/wikipedia-logo-stand";
 import GlobeIllustration from "@/public/svg/landing/globe-illustration";
 import GlobeIllustrationLines from "@/public/svg/landing/globe-illustration-lines";
+import SummarizeData from "@/public/svg/landing/summarize-data";
 
 const importingFrames = [
   [[2, 2]],
@@ -981,8 +982,8 @@ export default function Home() {
           <div className="absolute inset-0 features-section-source-box-shadow z-10 pointer-events-none" />
         </div>
 
-        {/* Bottom Full Width Card */}
-        <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl p-6 lg:col-span-4 lg:row-span-2 overflow-hidden">
+        {/* Bottom Left Card */}
+        <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl p-6 lg:col-span-2 lg:row-span-2 overflow-hidden">
           <div className="absolute top-4 left-4 max-w-lg z-[11]">
             <h3 className={`${styles.large} text-balance`}>
               Research The Globe
@@ -990,8 +991,8 @@ export default function Home() {
             <p
               className={`${styles.small} font-normal text-balance mt-2 text-white/50`}
             >
-              Get answers with proper citations, source links, and research
-              methodology, perfect for academic and professional use.
+              Get instant, reliable answers by searching the entire web - no
+              more guessing or outdated information
             </p>
           </div>
 
@@ -1000,6 +1001,24 @@ export default function Home() {
           <GlobeIllustrationLines className="absolute center-in-parent size-[900px] opacity-45 " />
           {/* shadow */}
           <div className="absolute inset-0 features-section-globe-box-shadow z-10 pointer-events-none" />
+        </div>
+
+        {/* Bottom Center Card */}
+        <div className="relative min-h-[350px] w-full bg-black text-white border border-border rounded-xl p-6 lg:col-span-2 lg:row-span-2 overflow-hidden">
+          <div className="absolute top-4 left-4 max-w-lg z-[11]">
+            <h3 className={`${styles.large} text-balance`}>
+              Smart Summarization
+            </h3>
+            <p
+              className={`${styles.small} font-normal text-balance mt-2 text-white/50`}
+            >
+              Summaries complex topics, key findings, and actionable insights
+              for your research.
+            </p>
+          </div>
+
+          {/* Illustrations */}
+          <SummarizeData className="absolute -bottom-10 left-1/2 -translate-x-1/2 size-[290px] md:size-[300px]  hover:scale-105 transition-all duration-300 z-[2]" />
         </div>
       </div>
 
