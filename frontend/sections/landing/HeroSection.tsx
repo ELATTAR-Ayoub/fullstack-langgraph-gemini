@@ -100,6 +100,7 @@ export default function HeroSection() {
         styles.flexCenter,
         "relative"
       )}
+      id="hero-section"
     >
       {/* main content */}
       <div className=" relative flex flex-col md:items-center gap-4 max-w-2xl mx-auto py-16 md:py-4 z-[11] ">
@@ -190,7 +191,18 @@ export default function HeroSection() {
           delay={3.5}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-[400px] ">
-            <Button variant="outline">
+            <Button
+              variant="outline"
+              onClick={() => {
+                const element = document.getElementById("features-section");
+                if (element) {
+                  element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
+            >
               <ArrowDown /> Learn more
             </Button>
             <Button onClick={handleStartNewChat} className="w-full">

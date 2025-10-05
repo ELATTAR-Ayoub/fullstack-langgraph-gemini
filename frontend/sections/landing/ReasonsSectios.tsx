@@ -177,7 +177,10 @@ export default function ReasonsSection() {
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 lg:gap-16 w-full max-w-6xl mx-auto">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-8 gap-8 lg:gap-16 w-full max-w-6xl mx-auto"
+        id="reasons-section"
+      >
         {/* Left Column - Text Content */}
         <div className="space-y-8 lg:col-span-3">
           {/* Feature List */}

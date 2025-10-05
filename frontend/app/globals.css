@@ -123,7 +123,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground scroll-smooth;
   }
 
   .mainContent {
@@ -348,14 +348,25 @@
   }
 
   .header-special-title {
+    @apply relative max-w-fit text-center p-2 bg-accent/5 rounded-full shadow border border-border/25 md:mx-auto mb-4;
+  }
+
+  .header-special-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(
       135deg,
       rgba(148, 214, 255, 0.8) 0%,
       rgba(148, 214, 255, 0.5) 37%,
       rgba(148, 214, 255, 0) 100%
     );
-    background-size: 250% 250%;
+    background-size: 300% 300%;
     animation: gradient-move 10s ease-in-out infinite;
-    @apply max-w-fit text-center p-2 bg-accent/5 rounded-full shadow border border-border/25 md:mx-auto mb-4;
+    border-radius: inherit;
+    z-index: -1;
   }
 }

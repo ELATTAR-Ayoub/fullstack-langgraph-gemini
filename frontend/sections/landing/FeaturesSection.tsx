@@ -853,7 +853,7 @@ export default function Home() {
   };
 
   return (
-    <section className={"Section"}>
+    <section className={"Section"} id="features-section">
       {/* Header Content */}
       <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">
         <p className={`${styles.Xsmall} header-special-title`}>

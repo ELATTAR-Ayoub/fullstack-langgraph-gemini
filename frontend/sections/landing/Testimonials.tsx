@@ -308,7 +308,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className={"Section"}>
+    <section className={"Section"} id="testimonials-section">
       <div className="container max-w-full mx-auto flex flex-col gap-8">
         {/* Header Content */}
         <div className="flex flex-col lg:gap-0 max-w-2xl mx-auto">

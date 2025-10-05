@@ -27,7 +27,7 @@ export default function JoinUSSection() {
   };
 
   return (
-    <section className={"Section"}>
+    <section className={"Section"} id="join-us-section">
       {/* Header Content */}
       <div
         className={`relative ${styles.flexCenter} flex-col max-w-6xl mx-auto min-h-96 md:min-h-[60vh] w-full rounded-2xl border border-border overflow-hidden`}
